@@ -165,8 +165,8 @@ class OrderCheckoutAPIView(views.APIView):
             # Thực hiện tạo giao dịch
             status, payment_id, approved_url = make_paypal_payment(
                 amount=order_total_price, currency="USD",
-                return_url=config('FE_DOMAIN') + "/payment/success/",
-                cancel_url=config('FE_DOMAIN') + "/payment/cancel/"
+                return_url=config('FE_DOMAIN') + "/order-completed",
+                cancel_url=config('FE_DOMAIN') + "/order-cancelled"
             )
             if status:
                 # Nếu status = True -> Tạo giao dịch thành công

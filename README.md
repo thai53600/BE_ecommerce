@@ -68,3 +68,7 @@ To enable upload image from POSTMAN: <br />
 
 To test upload image from POSTMAN: <br />
 *Method: POST -> form-data -> Key: uploadImage (type: File)*
+
+## Seeding data
+```python manage.py seed <(multi) feature_folder_name> --number=15```<br />
+Ex: python manage.py seed user --number=15

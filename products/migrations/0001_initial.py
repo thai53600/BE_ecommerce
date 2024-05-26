@@ -74,4 +74,5 @@ class Migration(migrations.Migration):
                 'ordering': ['-created_at'],
             },
         ),
+
     ]

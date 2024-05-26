@@ -29,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-8*(vo-je^i4!bx05@%jty&h%_hww+(k@x(akbiv!rq*hg0k_tf"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app', 'http://localhost:5173', '127.0.0.1']
-CORS_ALLOWED_ORIGINS = ['http://localhost:5173']
+ALLOWED_HOSTS = ['.vercel.app', 'http://localhost:5173', '127.0.0.1', 'https://vue3-eccomerce.vercel.app/']
+CORS_ALLOWED_ORIGINS = ['http://localhost:5173', 'https://vue3-eccomerce.vercel.app/']
 
 # Application definition
 
@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     "user",
     "orders",
     "drf_yasg",
-    "paypal.standard.ipn"
+    "paypal.standard.ipn",
+    "django_seed"
 ]
 
 MIDDLEWARE = [

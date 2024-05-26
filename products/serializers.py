@@ -37,6 +37,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Product
+        depth = 1
         fields = (
             'id',
             'name',
@@ -60,11 +61,12 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Category
+        depth = 1
         fields = (
             'id',
             'name',
             'slug',
-            'icon_url',
+            'thumbnail_url',
             'products',
             'created_at',
             'updated_at',

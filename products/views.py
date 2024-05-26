@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from backend_ecommerce.helpers import custom_response, parse_request
 from .models import Category, Product, ProductImage, ProductComment
 from .serializers import CategorySerializer, ProductSerializer, ProductImageSerializer, ProductCommentSerializer
+from filter_and_pagination import FilterPagination
 
 User = get_user_model()
 
@@ -14,9 +15,10 @@ class CategoryAPIView(views.APIView):
 
     def get(self, request):
         try:
-            categories = Category.objects.all()
-            serializers = CategorySerializer(categories, many=True)
-            return custom_response('Get all categories successfully!', 'Success', serializers.data, 200)
+            queryset = FilterPagination.filter_and_pagination(request, Category)
+            serialize_data = CategorySerializer(queryset['queryset'], many=True).data
+            result_set = {'list': serialize_data, 'pagination': queryset['pagination']}
+            return custom_response('Get all categories successfully!', 'Success', result_set, 200)
         except:
             return custom_response('Get all categories failed!', 'Error', None, 400)
 
@@ -74,9 +76,10 @@ class ProductViewAPI(views.APIView):
 
     def get(self, request):
         try:
-            products = Product.objects.all()
-            serializers = ProductSerializer(products, many=True)
-            return custom_response('Get all products successfully!', 'Success', serializers.data, 200)
+            queryset = FilterPagination.filter_and_pagination(request, Product)
+            serialize_data = ProductSerializer(queryset['queryset'], many=True).data
+            result_set = {'list': serialize_data, 'pagination': queryset['pagination']}
+            return custom_response('Get all products successfully!', 'Success', result_set, 200)
         except:
             return custom_response('Get all products failed!', 'Error', None, 400)
 
