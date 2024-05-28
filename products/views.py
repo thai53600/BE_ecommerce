@@ -1,11 +1,14 @@
-from rest_framework import views
+from rest_framework import views, filters, generics, pagination
 from rest_framework.permissions import AllowAny
 from django.http import Http404
 from django.contrib.auth import get_user_model
+from django_filters.rest_framework import FilterSet, DjangoFilterBackend
+
 from backend_ecommerce.helpers import custom_response, parse_request
 from .models import Category, Product, ProductImage, ProductComment
 from .serializers import CategorySerializer, ProductSerializer, ProductImageSerializer, ProductCommentSerializer
-from filter_and_pagination import FilterPagination
+
+
 
 User = get_user_model()
 
